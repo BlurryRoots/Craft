@@ -63,7 +63,15 @@ namespace Tests
 
             for (int count = 0; count < 1000; count++)
             {
-                p.NewSolution();
+                try {
+                    p.NewSolution ();
+                }
+                catch (Exception e) {
+                    Console.Write ("Finding a new solution failed due to: ");
+                    Console.WriteLine (e);
+                    Assert.Fail ();
+                }
+
                 double dotProduct = v1.X.UniqueValue * v2.X.UniqueValue + v1.Y.UniqueValue * v2.Y.UniqueValue + v1.Z.UniqueValue * v2.Z.UniqueValue;
                 Assert.IsTrue(MathUtil.NearlyEqual(dotProduct, 0), "Dot product not zero; was: "+dotProduct);
             }
@@ -101,7 +109,15 @@ namespace Tests
 
             for (int count = 0; count < 10; count++)
             {
-                p.NewSolution();
+                try {
+                    p.NewSolution ();
+                }
+                catch (Exception e) {
+                    Console.Write ("Finding a new solution failed due to: ");
+                    Console.WriteLine (e);
+                    Assert.Fail ();
+                }
+
                 double magnitude = Math.Sqrt(v1.X * v1.X + v1.Y * v1.Y + v1.Z * v1.Z);
                 Assert.IsTrue(MathUtil.NearlyEqual(magnitude, 1), "Magnitude not unity; was: " + magnitude);
                 double dotProduct = v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
