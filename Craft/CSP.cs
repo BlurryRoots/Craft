@@ -176,8 +176,8 @@ namespace Craft
             Trace.WriteLine(choice);
 #endif
             choiceStack.Push(choice);
-           if (choiceStack.Count>10)
-                Debugger.Break();
+            //if (choiceStack.Count>10)
+            //    Debugger.Break();
         }
 
         [Conditional("DEBUG")]
