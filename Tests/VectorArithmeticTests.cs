@@ -27,16 +27,16 @@ using System;
 
 using Craft;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Tests
 {
-    [TestClass]
+	[TestFixture]
     public class VectorArithmeticTests
     {
         private static readonly BoundingBox box = new BoundingBox(new Interval(-1, 1), new Interval(-1, 1), new Interval(-1, 1));
 
-        [TestMethod]
+		[Test]
         public void DotProductOneVectorFixedTest()
         {
             var p = new CSP();
@@ -52,7 +52,7 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+		[Test]
         public void DotProductTest()
         {
             var p = new CSP();
@@ -69,7 +69,7 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+		[Test]
         public void UnitVectorTest()
         {
             var p = new CSP();
@@ -84,7 +84,7 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+		[Test]
         public void OrthonormalBasisTest()
         {
             var p = new CSP();

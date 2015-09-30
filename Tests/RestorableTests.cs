@@ -25,14 +25,14 @@
 
 using Craft;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RestorableTests
     {
-        [TestMethod]
+		[Test]
         public void InitializedValue()
         {
             var s = new UndoStack<int>();
@@ -40,7 +40,7 @@ namespace Tests
             Assert.AreEqual(0, a);
         }
 
-        [TestMethod]
+		[Test]
         public void Setting()
         {
             var s = new UndoStack<int>();
@@ -49,7 +49,7 @@ namespace Tests
             Assert.AreEqual(1, a);
         }
 
-        [TestMethod]
+		[Test]
         public void SetAndRestore()
         {
             var s = new UndoStack<int>();

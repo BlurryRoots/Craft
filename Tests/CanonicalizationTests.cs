@@ -27,14 +27,14 @@ using System;
 
 using Craft;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Tests
 {
-    [TestClass]
+	[TestFixture]
     public class CanonicalizationTests
     {
-        [TestMethod]
+		[Test]
         public void CachingTest()
         {
             int i = 0;
@@ -45,7 +45,7 @@ namespace Tests
             Assert.AreNotEqual(t.Memoize("x", f, 1), t.Memoize("x", f, 2), "Memoize returned the same value for the different arguments");
         }
 
-        [TestMethod]
+		[Test]
         public void EqualityConstraintTest()
         {
             {

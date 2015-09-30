@@ -25,21 +25,21 @@
 
 using Craft;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Tests
 {
-    [TestClass]
+	[TestFixture]
     public class IntervalTests
     {
-        [TestMethod]
+		[Test]
         public void EmptyTest()
         {
             Assert.IsTrue(new Interval(1, -1).Empty);
             Assert.IsFalse(new Interval(-1, 1).Empty);
         }
 
-        [TestMethod]
+		[Test]
         public void ContainsScalarTest()
         {
             Assert.IsTrue(new Interval(0,1).Contains(1));
@@ -49,7 +49,7 @@ namespace Tests
             Assert.IsFalse(new Interval(0, 1).Contains(2));
         }
 
-        [TestMethod]
+		[Test]
         public void ContainsIntervalTest()
         {
             Assert.IsTrue(new Interval(0, 1).Contains(new Interval(0, 1)));
@@ -63,7 +63,7 @@ namespace Tests
             Assert.IsFalse(new Interval(0, 1).Contains(new Interval(-.25f, .75f)));
         }
 
-        [TestMethod]
+		[Test]
         public void IntersectionTest()
         {
             Assert.AreEqual(new Interval(1, 2), Interval.Intersection(new Interval(1, 2), new Interval(1, 2)));
@@ -75,7 +75,7 @@ namespace Tests
             Assert.IsTrue(Interval.Intersection(new Interval(1, 2), new Interval(3, 4)).Empty);
         }
 
-        [TestMethod]
+		[Test]
         public void UnionTest()
         {
             Assert.AreEqual(new Interval(1, 2), Interval.UnionBound(new Interval(1, 2), new Interval(1, 2)));
@@ -87,19 +87,19 @@ namespace Tests
             Assert.AreEqual(new Interval(1, 2), Interval.UnionBound(new Interval(1, 2), new Interval(3, -4)));
         }
 
-        [TestMethod]
+		[Test]
         public void AddIntervalTest()
         {
             Assert.AreEqual(new Interval(1, 3), new Interval(0,1) + new Interval(1, 2));
         }
 
-        [TestMethod]
+		[Test]
         public void SubtractIntervalTest()
         {
             Assert.AreEqual(new Interval(-2, 0), new Interval(0, 1) - new Interval(1, 2));
         }
 
-        [TestMethod]
+		[Test]
         public void MultiplyIntervalTest()
         {
             Assert.AreEqual(new Interval(2, 2), new Interval(1, 1) * new Interval(2, 2));
@@ -109,7 +109,7 @@ namespace Tests
             Assert.AreEqual(new Interval(1, 4), new Interval(-2, -1) * new Interval(-2, -1));
         }
 
-        [TestMethod]
+		[Test]
         public void DivideIntervalTest()
         {
             Assert.AreEqual(Interval.AllValues, new Interval(1, 1) / new Interval(-1, 1));
@@ -120,7 +120,7 @@ namespace Tests
             Assert.AreEqual(new Interval(double.NegativeInfinity, -1), new Interval(1, 2) / new Interval(-1, 0));
         }
 
-        [TestMethod]
+		[Test]
         public void IntegerPowerIntervalTest()
         {
             var neg = new Interval(-2, -1);
@@ -137,7 +137,7 @@ namespace Tests
             Assert.AreEqual(new Interval(1, 8), pos ^ 3);
         }
 
-        [TestMethod]
+		[Test]
         public void SqrtIntervalTest()
         {
             Assert.AreEqual(new Interval(2,3), Interval.PositiveSqrt(new Interval(4,9)));

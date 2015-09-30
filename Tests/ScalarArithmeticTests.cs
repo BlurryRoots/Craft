@@ -25,14 +25,14 @@
 
 using Craft;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Tests
 {
-    [TestClass]
+	[TestFixture]
     public class ScalarArithmeticTests
     {
-        [TestMethod]
+		[Test]
         public void UnconstrainedSumTest()
         {
             var p = new CSP();
@@ -47,7 +47,7 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+		[Test]
         public void SemiconstrainedSumTest()
         {
             var p = new CSP();
@@ -63,7 +63,7 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+		[Test]
         public void QuadraticTest()
         {
             var p = new CSP();
@@ -80,7 +80,7 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+		[Test]
         public void SumTest()
         {
             var p = new CSP();
@@ -94,7 +94,7 @@ namespace Tests
             AssertUnique(sum, 0.75f);
         }
 
-        [TestMethod]
+		[Test]
         public void SumATest()
         {
             var p = new CSP();
@@ -108,7 +108,7 @@ namespace Tests
             AssertUnique(a, 0.5f);
         }
 
-        [TestMethod]
+		[Test]
         public void SumBTest()
         {
             var p = new CSP();
@@ -122,7 +122,7 @@ namespace Tests
             AssertUnique(b, 0.5f);
         }
 
-        [TestMethod]
+		[Test]
         public void DifferenceTest()
         {
             var p = new CSP();
@@ -136,7 +136,7 @@ namespace Tests
             AssertUnique(difference, 0.25f);
         }
 
-        [TestMethod]
+		[Test]
         public void DifferenceATest()
         {
             var p = new CSP();
@@ -150,7 +150,7 @@ namespace Tests
             AssertUnique(a, 1);
         }
 
-        [TestMethod]
+		[Test]
         public void DifferenceBTest()
         {
             var p = new CSP();
@@ -164,7 +164,7 @@ namespace Tests
             AssertUnique(b, 0.25f);
         }
 
-        [TestMethod]
+		[Test]
         public void ProductTest()
         {
             var p = new CSP();
@@ -178,7 +178,7 @@ namespace Tests
             AssertUnique(product, 0.25f);
         }
 
-        [TestMethod]
+		[Test]
         public void ProductATest()
         {
             var p = new CSP();
@@ -192,7 +192,7 @@ namespace Tests
             AssertUnique(a, 1);
         }
 
-        [TestMethod]
+		[Test]
         public void ProductBTest()
         {
             var p = new CSP();
@@ -206,7 +206,7 @@ namespace Tests
             AssertUnique(b, 0.5f);
         }
 
-        [TestMethod]
+		[Test]
         public void QuotientTest()
         {
             var p = new CSP();
@@ -220,7 +220,7 @@ namespace Tests
             AssertUnique(quotient, 1);
         }
 
-        [TestMethod]
+		[Test]
         public void QuotientATest()
         {
             var p = new CSP();
@@ -234,7 +234,7 @@ namespace Tests
             AssertUnique(a, 0.25f);
         }
 
-        [TestMethod]
+		[Test]
         public void QuotientBTest()
         {
             var p = new CSP();
@@ -248,7 +248,7 @@ namespace Tests
             AssertUnique(b, 2f);
         }
 
-        [TestMethod]
+		[Test]
         public void OddPowerNegativeTest()
         {
             var p = new CSP();
@@ -260,7 +260,7 @@ namespace Tests
             AssertUnique(power, -8f);
         }
 
-        [TestMethod]
+		[Test]
         public void OddPowerNegativeATest()
         {
             var p = new CSP();
@@ -272,7 +272,7 @@ namespace Tests
             AssertUnique(a, -2f);
         }
 
-        [TestMethod]
+		[Test]
         public void OddPowerPositiveTest()
         {
             var p = new CSP();
@@ -284,7 +284,7 @@ namespace Tests
             AssertUnique(power, 8f);
         }
 
-        [TestMethod]
+		[Test]
         public void OddPowerPositiveATest()
         {
             var p = new CSP();
@@ -296,7 +296,7 @@ namespace Tests
             AssertUnique(a, 2f);
         }
 
-        [TestMethod]
+		[Test]
         public void EvenPowerPositiveATest()
         {
             var p = new CSP();
@@ -308,7 +308,7 @@ namespace Tests
             AssertUnique(a, 2f);
         }
 
-        [TestMethod]
+		[Test]
         public void EvenPowerPositiveTest()
         {
             var p = new CSP();
@@ -320,7 +320,7 @@ namespace Tests
             AssertUnique(power, 4f);
         }
 
-        [TestMethod]
+		[Test]
         public void EvenPowerNegativeATest()
         {
             var p = new CSP();
@@ -332,7 +332,7 @@ namespace Tests
             AssertUnique(a, -2f);
         }
 
-        [TestMethod]
+		[Test]
         public void EvenPowerNegativeTest()
         {
             var p = new CSP();
@@ -344,7 +344,7 @@ namespace Tests
             AssertUnique(power, 4f);
         }
 
-        [TestMethod]
+		[Test]
         public void EvenPowerZeroCrossingATest()
         {
             var p = new CSP();
