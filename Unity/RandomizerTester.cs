@@ -29,10 +29,9 @@ using System.Linq;
 
 using UnityEngine;
 
-[AddComponentMenu("Craft/Randomizer tester")]
 public class RandomizerTester : MonoBehaviour
 {
-    public Randomizer Randomizer;
+    public VariableRandomizer Randomizer;
 
     public int NumberOfSolutions;
 
@@ -42,7 +41,7 @@ public class RandomizerTester : MonoBehaviour
     public void Start()
     {
         if (Randomizer == null)
-            Randomizer = this.GetComponent<Randomizer>();
+            Randomizer = this.GetComponent<VariableRandomizer> ();
         if (Path.GetExtension(CSVFileName) == "")
             CSVFileName = CSVFileName + ".csv";
         using (var file = File.CreateText(CSVFileName))

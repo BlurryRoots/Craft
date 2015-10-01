@@ -30,27 +30,26 @@ using Debug = System.Diagnostics.Debug;
 /// <summary>
 /// Creates scatter plots of Randomizer output using a particle system
 /// </summary>
-[AddComponentMenu("Craft/Randomizer visualizer")]
+[RequireComponent(typeof (ParticleSystem))]
+[RequireComponent (typeof (VariableRandomizer))]
 public class RandomizerVisualizer : MonoBehaviour
 {
-    public Randomizer Randomizer;
     public string XVariable, YVariable, ZVariable;
     public int EmitRate = 1;
 
     public float Scale = 1;
 
     private int xVariableIndex, yVariableIndex, zVariableIndex;
+    private ParticleSystem particles;
+    public VariableRandomizer Randomizer;
 
-    internal void Start()
+    void Start()
     {
-        if (Randomizer == null)
-            Randomizer = this.GetComponent<Randomizer>();
-        if (particleSystem == null)
-        {
-            gameObject.AddComponent<ParticleSystem>();
-            Debug.Assert(particleSystem != null, "particleSystem != null");
-            particleSystem.enableEmission = false;
-        }
+        Randomizer = this.GetComponent<VariableRandomizer> ();
+
+        particles = this.GetComponent<ParticleSystem> ();
+        particles.enableEmission = false;
+
         xVariableIndex = this.Randomizer.VariableIndex(XVariable);
         yVariableIndex = this.Randomizer.VariableIndex(YVariable);
         zVariableIndex = (string.IsNullOrEmpty(ZVariable)) ? -1 : this.Randomizer.VariableIndex(ZVariable);
@@ -67,7 +66,7 @@ public class RandomizerVisualizer : MonoBehaviour
     /// <summary>
     /// Compute some new solutions and emit them as particles.
     /// </summary>
-    internal void Update()
+    void Update()
     {
         for (int i = 0; i < EmitRate; i++)
         {
@@ -101,17 +100,17 @@ public class RandomizerVisualizer : MonoBehaviour
                 (float)this.Randomizer.ScalarValue(xVariableIndex),
                 (float)this.Randomizer.ScalarValue(yVariableIndex),
                 zVariableIndex < 0 ? 0 : (float)this.Randomizer.ScalarValue(zVariableIndex));
-            particleSystem.Emit(Scale*position, Vector3.zero, 0.1f, 1, Color.yellow);
+            particles.Emit (Scale * position, Vector3.zero, 0.1f, 1, Color.yellow);
         }
     }
 
-    internal void OnGUI()
+    void OnGUI()
     {
         GUILayout.Label(string.Format("Average solve time: {0}usec\nMin: {1}\nMax: {2}\nTotal variables: {3}\nTotal constraints: {4}",
             totalSolveTime/solveCount,
             minSolveTime,
             maxSolveTime,
-            this.Randomizer.CSP.VariableCount,
-            this.Randomizer.CSP.ConstraintCount));
+            this.Randomizer.csp.VariableCount,
+            this.Randomizer.csp.ConstraintCount));
     }
 }
